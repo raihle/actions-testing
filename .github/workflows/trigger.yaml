@@ -7,17 +7,7 @@ jobs:
   run:
     runs-on: [ubuntu-latest]
     steps:
-      - name: Print debug information
+      - name: Print trigger information
         run: |
-          echo "# Workflow" >> $GITHUB_STEP_SUMMARY
-          echo <<<"EOF"
-          '```json
-          ${{ toJSON(github.event.workflow) }}
-          ```'
-          EOF >> $GITHUB_STEP_SUMMARY
-          echo "# Workflow run" >> $GITHUB_STEP_SUMMARY
-          echo <<<"EOF"
-          '```json
-          ${{ toJSON(github.event.workflow_run) }}
-          ```'
-          EOF>> $GITHUB_STEP_SUMMARY
+          echo 'Triggered by ${{ github.event.workflow.name }} (${{ github.event.workflow_run.html_url }})' >> $GITHUB_STEP_SUMMARY
+          echo 'Commit ${{ github.event.workflow_run.head_commit.message }} by ${{ github.event.workflow_run.head_commit.author.email }} / ${{ github.event.workflow_run.head_commit.committer.email }}' >> $GITHUB_STEP_SUMMARY
