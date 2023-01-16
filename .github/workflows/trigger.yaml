@@ -1,0 +1,14 @@
+name: Triggered
+on:
+  workflow_run:
+    types: [completed]
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Print debug information
+        run: |
+          echo "# Workflow" >> $GITHUB_STEP_SUMMARY
+          echo ${{ toJSON(github.event.workflow) }} >> $GITHUB_STEP_SUMMARY
+          echo "# Workflow run" >> $GITHUB_STEP_SUMMARY
+          echo ${{ toJSON(github.event.workflow_run) }} >> $GITHUB_STEP_SUMMARY
