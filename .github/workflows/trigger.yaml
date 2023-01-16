@@ -1,6 +1,7 @@
 name: Triggered
 on:
   workflow_run:
+    workflows: [Main]
     types: [completed]
 jobs:
   run:
