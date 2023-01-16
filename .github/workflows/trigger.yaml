@@ -11,9 +11,13 @@ jobs:
         run: |
           echo "# Workflow" >> $GITHUB_STEP_SUMMARY
           echo <<<"EOF"
+          '```json
           ${{ toJSON(github.event.workflow) }}
+          ```'
           EOF >> $GITHUB_STEP_SUMMARY
           echo "# Workflow run" >> $GITHUB_STEP_SUMMARY
           echo <<<"EOF"
+          '```json
           ${{ toJSON(github.event.workflow_run) }}
+          ```'
           EOF>> $GITHUB_STEP_SUMMARY
